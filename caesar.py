@@ -1,59 +1,56 @@
 import sys
 
 def main():
-    message = input("Introducir Mensaje a Cifrar: ")
-    if message == "":
+    mensaje = input("Introducir Mensaje a Cifrar: ")
+    if mensaje == "":
         print("No puede ir Vacio ¡¡INTENTA MAS TARDE BUEN DIA Good Luck !!")
         sys.exit(0)
     
-    key = int(input("key [0-26]: "))
-    while key < 0 or key > 26:
+    espaciocifrado = int(input("Espacios a Cifrar [0-26]: "))
+    while espaciocifrado < 0 or espaciocifrado > 26:
         print("El numero debe estar entre 0 y 26")
-        key = int(input("key [0-26]: "))
+        espaciocifrado = int(input("espacio Cifrado [0-26]: "))
                
-    mode = input("Cifrar o Decifrar [c/d]: ") 
+    cifdesc = input("Cifrar o Decifrar [c/d]: ") 
     
-    if mode.lower().startswith('c'):
-        mode = "cifrar"
-    elif mode.lower().startswith('d'):
-        mode = "descifrar"
+    if cifdesc.lower().startswith('c'):
+        cifdesc = "cifrar"
+    elif cifdesc.lower().startswith('d'):
+        cifdesc = "descifrar"
         
-    transformar = encdec(message, key, mode)
-    if mode == "cifrar":
+    transformar = encdec(mensaje, espaciocifrado, cifdesc)
+    if cifdesc == "cifrar":
         print()
         print("MENSAJE CIFRADO: ", transformar)
-    elif mode == "descifrar":
+    elif cifdesc == "descifrar":
         print(("mensaje Descifrar:", transformar))
         
-def encdec(message, key, mode):
-    # message = message.upper()
+def encdec(mensaje, espaciocifrado, cifdesc):
+    
     transformar = ""
-    LETTERS = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
-    for symbol in message:
-        if symbol in LETTERS:
-          num = LETTERS.find(symbol)
-          if mode == "cifrar":
-            num = num + key
-          elif mode == "descifrar":
-            num = num - key
+    alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+    for symbol in mensaje:
+        if symbol in alfabeto:
+          num = alfabeto.find(symbol)
+          if cifdesc == "cifrar":
+            num = num + espaciocifrado
+          elif cifdesc == "descifrar":
+            num = num - espaciocifrado
             
-          if num >= len(LETTERS):
-            num -= len(LETTERS)
+          if num >= len(alfabeto):
+            num -= len(alfabeto)
           elif num <= 0:
-            num += len(LETTERS)
+            num += len(alfabeto)
             
-          transformar += LETTERS[num]
+          transformar += alfabeto[num]
         else:
             transformar += symbol
     return transformar
 
-   
-    
-
 if __name__ == '__main__':
     main()
     print()
-    print("GRACIAS POR USAR EL PROGRAMA DE CIFRADO")
+    print("GRACIAS POR USAR EL PROGRAMA DE CIFRADO ¡¡ HAVE A NICE DAY !!")
     print()
     input("Presionar Enter para TERMINAR")
     sys.exit(0)
