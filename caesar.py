@@ -1,7 +1,7 @@
 import sys
 
 def main():
-    message = input("Introducir Mensaje: ")
+    message = input("Introducir Mensaje a Cifrar: ")
     if message == "":
         print("No puede ir Vacio ¡¡INTENTA MAS TARDE BUEN DIA Good Luck !!")
         sys.exit(0)
