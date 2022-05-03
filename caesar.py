@@ -3,7 +3,7 @@ import sys
 def main():
     message = input("Introducir Mensaje: ")
     if message == "":
-        print("No puede ir Vacio ¡¡INTENTA MAS TARDE BUEN DIA !!")
+        print("No puede ir Vacio ¡¡INTENTA MAS TARDE BUEN DIA Good Luck !!")
         sys.exit(0)
     
     key = int(input("key [0-26]: "))
@@ -18,16 +18,16 @@ def main():
     elif mode.lower().startswith('d'):
         mode = "descifrar"
         
-    translated = encdec(message, key, mode)
+    transformar = encdec(message, key, mode)
     if mode == "cifrar":
         print()
-        print("MENSAJE CIFRADO: ", translated)
+        print("MENSAJE CIFRADO: ", transformar)
     elif mode == "descifrar":
-        print(("mensaje Descifrar:", translated))
+        print(("mensaje Descifrar:", transformar))
         
 def encdec(message, key, mode):
     # message = message.upper()
-    translated = ""
+    transformar = ""
     LETTERS = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
     for symbol in message:
         if symbol in LETTERS:
@@ -42,10 +42,10 @@ def encdec(message, key, mode):
           elif num <= 0:
             num += len(LETTERS)
             
-          translated += LETTERS[num]
+          transformar += LETTERS[num]
         else:
-            translated += symbol
-    return translated
+            transformar += symbol
+    return transformar
 
    
     
