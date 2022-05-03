@@ -8,7 +8,7 @@ def main():
     
     espaciocifrado = int(input("Espacios a Cifrar [0-26]: "))
     while espaciocifrado < 0 or espaciocifrado > 26:
-        print("El numero debe estar entre 0 y 26")
+        print("El numeroformatoero debe estar entre 0 y 26")
         espaciocifrado = int(input("espacio Cifrado [0-26]: "))
                
     cifdesc = input("Cifrar o Decifrar [c/d]: ") 
@@ -18,33 +18,33 @@ def main():
     elif cifdesc.lower().startswith('d'):
         cifdesc = "descifrar"
         
-    transformar = encdec(mensaje, espaciocifrado, cifdesc)
+    transformar = entradamesci(mensaje, espaciocifrado, cifdesc)
     if cifdesc == "cifrar":
         print()
         print("MENSAJE CIFRADO: ", transformar)
     elif cifdesc == "descifrar":
         print(("mensaje Descifrar:", transformar))
         
-def encdec(mensaje, espaciocifrado, cifdesc):
+def entradamesci(mensaje, espaciocifrado, cifdesc):
     
     transformar = ""
     alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
-    for symbol in mensaje:
-        if symbol in alfabeto:
-          num = alfabeto.find(symbol)
+    for simbolo in mensaje:
+        if simbolo in alfabeto:
+          numeroformato = alfabeto.find(simbolo)
           if cifdesc == "cifrar":
-            num = num + espaciocifrado
+            numeroformato = numeroformato + espaciocifrado
           elif cifdesc == "descifrar":
-            num = num - espaciocifrado
+            numeroformato = numeroformato - espaciocifrado
             
-          if num >= len(alfabeto):
-            num -= len(alfabeto)
-          elif num <= 0:
-            num += len(alfabeto)
+          if numeroformato >= len(alfabeto):
+            numeroformato -= len(alfabeto)
+          elif numeroformato <= 0:
+            numeroformato += len(alfabeto)
             
-          transformar += alfabeto[num]
+          transformar += alfabeto[numeroformato]
         else:
-            transformar += symbol
+            transformar += simbolo
     return transformar
 
 if __name__ == '__main__':
